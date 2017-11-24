@@ -52,16 +52,16 @@ y_dat <- rnorm(n = 100, mean = 10, sd = 0.2)  # y data
 xy <- data.frame(x_dat, y_dat)  # combine into data frame
 ```
 
-Now we can remove `x_dat` values greater than 7.5 using `filter()`:
+Here you can add some more text if you wish.
 
-```
+```r
 xy_fil <- xy %>%  # Create object with the contents of `xy`
 	filter(x_dat < 7.5)  # Keep rows where `x_dat` is less than 7.5
 ```
 
 And finally, plot the data:
 
-```
+```r
 ggplot(data = xy_fil, aes(x = x_dat, y = y_dat)) +  # Select the data to use
 	geom_point() +  # Draw scatter points
 	geom_smooth(method = "loess")  # Draw a loess curve
@@ -69,7 +69,7 @@ ggplot(data = xy_fil, aes(x = x_dat, y = y_dat)) +  # Select the data to use
 
 At this point it would be a good idea to include an image of what the plot is meant to look like, so students can check they've done it right. Replace `IMAGE_NAME.png` with your own image file:
 
-<center> <img src="{{ site.baseurl }}/img/IMAGE_NAME.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/IMAGE_NAME.png" alt="Img" style="width: 800px;"/> </center>
 
 <a name="section1"></a>
 

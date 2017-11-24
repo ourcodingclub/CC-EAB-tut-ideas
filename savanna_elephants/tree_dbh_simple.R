@@ -11,8 +11,8 @@ setwd("/Users/johngodlee/Downloads/congo_diam")
 tree_loc_diam_1_2_summ <- read.csv("tree_loc_diam_1_2.csv")
 
 # Plot bounding boxes
-plot_bbox_1 <- read_csv("plot_bb_1.csv")
-plot_bbox_2 <- read_csv("plot_bb_2.csv")
+plot_bbox_1 <- read_csv("plot_bb_1.csv")  # Elephant plot
+plot_bbox_2 <- read_csv("plot_bb_2.csv")  # No elephant plot
 
 # Plot tree dbh as point size ----
 ggplot(tree_loc_diam_1_2_summ, aes(x = dec_lon, 
@@ -22,15 +22,6 @@ ggplot(tree_loc_diam_1_2_summ, aes(x = dec_lon,
 	geom_point(alpha = 0.5) + 
 	theme(aspect.ratio = 1) +  # coord_map() doesn't work with facet_wrap()
 	facet_wrap(~ plot, scales = "free") 
-
-# Is there an effect of elephants on tree morphology? ----
-# dbh boxplots
-ggplot(tree_loc_diam_1_2_summ, aes(x = plot, y = dbh_cm)) + 
-	geom_boxplot()
-
-# height boxplots
-ggplot(tree_loc_diam_1_2_summ, aes(x = plot, y = height_m)) + 
-	geom_boxplot()
 
 # Is there an effect of elephants on spatial clustering of trees? ----
 # Split data frames
@@ -50,6 +41,7 @@ elephant_plot <- ggplot(tree_loc_diam_1_summ, aes(x = dec_lon, y = dec_lat)) +
 	ylim(min(plot_bbox_1$dec_lat) - 0.001, max(plot_bbox_1$dec_lat) + 0.001) + 
 	xlab("Decimal Longitude") +
 	ylab("Decimal Latitude") +
+	labs(fill = "Tree Density") +
 	theme_classic() 
 
 no_elephant_plot <- ggplot(tree_loc_diam_2_summ, aes(x = dec_lon, y = dec_lat)) + 
@@ -61,7 +53,9 @@ no_elephant_plot <- ggplot(tree_loc_diam_2_summ, aes(x = dec_lon, y = dec_lat)) 
 	ylim(min(plot_bbox_2$dec_lat) - 0.001, max(plot_bbox_2$dec_lat) + 0.001) + 
 	xlab("Decimal Longitude") +
 	ylab("Decimal Latitude") +
+	labs(fill = "Tree Density") +
 	theme_classic() 
 
+# Save the plots
 ggsave(filename = "img/elephant_plot.png", plot = elephant_plot)
 ggsave(filename = "img/no_elephant_plot.png", plot = no_elephant_plot)

@@ -52,16 +52,16 @@ y_dat <- rnorm(n = 100, mean = 10, sd = 0.2)  # y data
 xy <- data.frame(x_dat, y_dat)  # combine into data frame
 ```
 
-Now we can remove `x_dat` values greater than 7.5 using `filter()`:
+Here you can add some more text if you wish.
 
-```
+```r
 xy_fil <- xy %>%  # Create object with the contents of `xy`
 	filter(x_dat < 7.5)  # Keep rows where `x_dat` is less than 7.5
 ```
 
 And finally, plot the data:
 
-```
+```r
 ggplot(data = xy_fil, aes(x = x_dat, y = y_dat)) +  # Select the data to use
 	geom_point() +  # Draw scatter points
 	geom_smooth(method = "loess")  # Draw a loess curve

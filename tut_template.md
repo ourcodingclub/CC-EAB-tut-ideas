@@ -69,7 +69,7 @@ ggplot(data = xy_fil, aes(x = x_dat, y = y_dat)) +  # Select the data to use
 
 At this point it would be a good idea to include an image of what the plot is meant to look like, so students can check they've done it right. Replace `IMAGE_NAME.png` with your own image file:
 
-<center> <img src="{{ site.baseurl }}/img/IMAGE_NAME.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/IMAGE_NAME.png" alt="Img" style="width: 800px;"/> </center>
 
 <a name="section1"></a>
 

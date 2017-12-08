@@ -1,6 +1,6 @@
 <center><img src="{{ site.baseurl }}/tutheaderbl.png" alt="Img"></center>
 
-To add images, replace tutheaderbl1.png with the file name of any image you upload to your GitHub repository.
+To add images, replace `tutheaderbl1.png` with the file name of any image you upload to your GitHub repository.
 
 ### Tutorial Aims
 

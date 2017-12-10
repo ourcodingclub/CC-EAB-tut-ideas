@@ -29,7 +29,7 @@ glimpse(dataset)
 # Label sunflecks in additional column
 dataset <- mutate(dataset, sunfleck = ifelse(dataset$PARi > 12, "S", ""))
 
-# Percentage of time within sunfleck - do we need these? The numbers are not used later on.
+# Percentage of time within sunfleck
 dataset %>% filter(sunfleck == "S") %>% nrow %>% `/`(nrow(dataset))
 # Relative PAR received during sunfleck periods
 dataset %>% filter(sunfleck == "S") %>% dplyr::select(PARi) %>% sum %>% `/`(sum(dataset$PARi))
@@ -53,40 +53,3 @@ dataset_subset <- filter(dataset,format(`Time`, "%H:%M") >= "11:00" & format(`Ti
 
 # Save plot
 ggsave(par_plot, filename = "PAR_assimilation.png", width = 8, height = 5)
-
-# Task 3: Visualise the trajectory of of assimilation rates within one selected sunfleck
-#--------------------------------------------------------------------------------------
-# Label individual sunflecks (fast implementation, probably lots of other, more efficient options here)
-sunfleckID = 1
-dataset$Sunfleck_ID = 0
-for (r in (1:(nrow(dataset) - 1))){
-  if(dataset$sunfleck[r+1] == "S"){
-    if(dataset$sunfleck[r] == "S"){
-      dataset$Sunfleck_ID[r + 1] <- sunfleckID
-    }
-    else{
-      sunfleckID = sunfleckID + 1
-      dataset$Sunfleck_ID[r + 1] <- sunfleckID
-    }
-  }
-}
-
-# Plot the trajectories 
-# (left pane: changes in PAR during one sunfleck, right pane: photosynthetic response during one sunfleck, use colours to indicate time)
-sunfleck_data <- filter(dataset, Sunfleck_ID == 27)
-
-(irradiation <- ggplot(sunfleck_data, aes(x = Time, y = PARi)) + 
-  geom_line(size = 1) + 
-  labs(x ="Time", y = "Photosynthetic active radiation [?mol/m?.s]") +
-  theme_classic() +
-  ggtitle("(a) Irradiation\n"))
-
-(photosynthesis <- ggplot(sunfleck_data, aes(x = PARi, y = Photo, colour = Time)) + 
-  geom_point() + 
-  labs(x = "PAR [?mol/m?.s]", y = "Assimilation rate [?mol CO2/m?.s]") + 
-  ggtitle("(b) Photosynthesis\n") +
-  theme_classic() +
-  theme(legend.justification = c(1,-0.05), legend.position = c(0.98,0)))
-
-(panel <- multiplot(irradiation, photosynthesis, cols = 2))
-ggsave(panel, filename = "PAR_panel.png", width = 10, height = 5)

@@ -1,3 +1,7 @@
+# Do elephants influence the spatial clustering of trees in a dry savannah?
+# John Godlee
+# johngodlee@gmail.com
+
 # Packages ----
 library(ggplot2)
 library(dplyr)

@@ -1,5 +1,5 @@
 # CC-EAB-tut-ideas
-Data and scripts for tutorial ideas at the Coding Club Ecology Across Borders workshop.
+Data and scripts for tutorial ideas at the [Coding Club Ecology Across Borders workshop](https://ourcodingclub.github.io/2017/11/23/tutorials.html).
 
 Each folder contains data and scripts for one of the example tutorial ideas. 
 

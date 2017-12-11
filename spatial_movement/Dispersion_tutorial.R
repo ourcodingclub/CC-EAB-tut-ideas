@@ -22,7 +22,7 @@ View(Dispersion)
 # and monitored for 10 minutes to highlight differences in their movement patterns
 
 # create a variable with the date sequence
-date <- as.POSIXct(strptime(as.character(Dispersion$Slice.n.), "%j"), tz = "GMT")
+date <- as.POSIXct(strptime(as.character(Dispersion$time), format = "%s"),tz = "GMT")
 
 # create a trace file with all the coordinate sequences: take a good look at the syntax
 trace <- as.ltraj(xy=Dispersion[,c("X", "Y")], date = date, id = Dispersion$ID)

@@ -3,6 +3,11 @@
 To add images, replace `tutheaderbl1.png` with the file name of any image you upload to your GitHub repository.
 
 ### Tutorial Aims
+- Grasp the difference between descriptive and inferential statistics
+- Become familiar with the concept of hypothesis-testing
+- Conduct basic parametric statistical tests in R: t-tests correlation and regression
+- Checking for the right test assumptions
+- Visualising our results
 
 #### <a href="#section1"> 1. The first section</a>
 
